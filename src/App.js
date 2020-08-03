@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import CountGroup from './Component/CountGroup';
+import CountGroup from './Component/CountGroup/index.jsx';
 
 function App() {
   return (
