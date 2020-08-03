@@ -8,10 +8,15 @@ class CountGroup extends React.Component {
     }
 
     handleResize = (event) => {
-        this.setState({
-            size: event.target.value ? parseInt(event.target.value) : 0,
-            totalValue : 0
-        })
+        const newSize = event.target.value ? parseInt(event.target.value) : 0 ;
+        if(newSize != this.state.size){
+            this.setState({
+            
+                size: event.target.value ? parseInt(event.target.value) : 0,
+                totalValue : 0
+            })
+        }
+       
     }
 
     handleIncrease = () => {

@@ -31,6 +31,10 @@ class Counter extends React.Component {
     return null;
   }
 
+  static componentWillMount(props,state) {
+        
+  }
+
   render() {
     return (
       <div>
