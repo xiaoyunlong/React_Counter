@@ -10,7 +10,7 @@ class Counter extends React.Component {
     this.setState((prevState) => ({
       value: prevState.value + 1,
     }));
-    this.props.handleIncrease();
+    this.props.handleChange(-1);
   };
 
   onDcrease = () => {
@@ -18,21 +18,21 @@ class Counter extends React.Component {
       value: prevState.value - 1,
     }));
 
-    this.props.handleDncrease();
+    this.props.handleChange(1);
   };
 
-  static getDerivedStateFromProps(props, state) {
-    if (props.groupSize !== state.groupSize) {
-      return {
-        value: 0,
-        groupSize: props.groupSize,
-      };
-    }
-    return null;
-  }
+  // static getDerivedStateFromProps(props, state) {
+  //   if (props.groupSize !== state.groupSize) {
+  //     return {
+  //       value: 0,
+  //       groupSize: props.groupSize,
+  //     };
+  //   }
+  //   return null;
+  // }
 
   static componentWillMount(props,state) {
-        
+      this.props.handleChange(state.value);
   }
 
   render() {

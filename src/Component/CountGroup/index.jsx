@@ -8,27 +8,33 @@ class CountGroup extends React.Component {
     }
 
     handleResize = (event) => {
-        const newSize = event.target.value ? parseInt(event.target.value) : 0 ;
-        if(newSize != this.state.size){
-            this.setState({
-            
+        
+            this.setState({            
                 size: event.target.value ? parseInt(event.target.value) : 0,
-                totalValue : 0
+                
             })
-        }
+        
        
     }
 
-    handleIncrease = () => {
-        this.setState((preState) => ({
-            totalValue: preState.totalValue + 1
-        }))
-    }
+    // handleIncrease = () => {
+    //     this.setState((preState) => ({
+    //         totalValue: preState.totalValue + 1
+    //     }))
+    // }
 
-    handleDncrease = () => {
+    // handleDncrease = () => {
+    //     this.setState((prevState) => {
+    //         return ({
+    //             totalValue: prevState.totalValue - 1
+    //         });
+    //     })
+    // }
+
+    handleChange = (value) =>{
         this.setState((prevState) => {
             return ({
-                totalValue: prevState.totalValue - 1
+                totalValue: prevState.totalValue - value
             });
         })
     }
@@ -47,7 +53,9 @@ class CountGroup extends React.Component {
                 </label>
             </div>
             {
-                initArrays.map(key => <Counter groupSize={this.state.size} handleIncrease={this.handleIncrease} handleDncrease={this.handleDncrease} key={key}/>)
+                //initArrays.map(key => <Counter groupSize={this.state.size} handleIncrease={this.handleIncrease} handleDncrease={this.handleDncrease} key={key}/>)
+                initArrays.map(key => <Counter handleChange={this.handleChange} key={key}/>)
+            
             }
         </div>
 
