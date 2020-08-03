@@ -1,49 +1,28 @@
 import React from "react";
+import PropTypes from 'prop-types'
 
 class Counter extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: 0, groupSize: 0 };
-  }
-
-  onIcrease = () => {
-    this.setState((prevState) => ({
-      value: prevState.value + 1,
-    }));
-    this.props.handleChange(-1);
-  };
-
-  onDcrease = () => {
-    this.setState((prevState) => ({
-      value: prevState.value - 1,
-    }));
-
-    this.props.handleChange(1);
-  };
-
-  // static getDerivedStateFromProps(props, state) {
-  //   if (props.groupSize !== state.groupSize) {
-  //     return {
-  //       value: 0,
-  //       groupSize: props.groupSize,
-  //     };
-  //   }
-  //   return null;
-  // }
-
-  static componentWillMount(props,state) {
-      this.props.handleChange(state.value);
+    this.state = { value: 0 };
   }
 
   render() {
+    const { value, onIncrement, onDecrement } = this.props
     return (
       <div>
-        <button onClick={this.onDcrease}>-</button>
-        <mark>{this.state.value}</mark>
-        <button onClick={this.onIcrease}>+</button>
+        <button onClick={onDecrement}>-</button>
+        <mark>{value}</mark>
+        <button onClick={onIncrement}>+</button>
       </div>
     );
   }
+}
+
+Counter.propTypes = {
+  value: PropTypes.number.isRequired,
+  onIncrement: PropTypes.func.isRequired,
+  onDecrement: PropTypes.func.isRequired
 }
 
 export default Counter;
